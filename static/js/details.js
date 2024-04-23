@@ -15,25 +15,21 @@ function showDetail() {
 }
 
 function renderRecipe(recipe) {
-  // Get the container where the recipe will be displayed
   const container = document.querySelector(".recipe");
-  container.innerHTML = ""; // Clear existing content if any
+  container.innerHTML = "";
 
-  // Create ingredients list
   let ingredientsList = "<ul>";
   recipe.ingredients.forEach((ingredient) => {
     ingredientsList += `<li>${ingredient}</li>`;
   });
   ingredientsList += "</ul>";
 
-  // Create preparation steps list
   let preparationList = "<ol>";
   recipe.preparation.forEach((step) => {
-    preparationList += `<li>${step.step}</li>`; // Assuming each step is an object with a 'step' property
+    preparationList += `<li>${step.step}</li>`;
   });
   preparationList += "</ol>";
 
-  // Set up the recipe HTML
   const recipeEl = document.createElement("div");
   recipeEl.innerHTML = `
       <img src="img/${recipe.image}" alt="Image of ${recipe.title}" />
@@ -46,10 +42,8 @@ function renderRecipe(recipe) {
       <a href="/">Back</a>
     `;
 
-  // Append the detailed recipe element to the container
   container.append(recipeEl);
 
-  // Populate form fields if they exist for editing
   if (editForm) {
     editForm.title.value = recipe.title;
     editForm.image.value = recipe.image;
